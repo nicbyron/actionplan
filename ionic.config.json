@@ -1,0 +1,7 @@
+{
+  "name": "ActionPlan_v1",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
