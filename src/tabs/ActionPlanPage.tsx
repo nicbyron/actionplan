@@ -8,48 +8,11 @@ import { observer } from 'mobx-react';
 import { ExampleActionItemListItem } from '../components/ExampleActionItemListItem';
 
 
-const ActionItemList = observer(() => {
-    const { docs, isLoading } = actionItems;
-    return (
-      <div>
-        {isLoading ? <span>Loading...</span> : undefined}
-        {docs.map((doc) => (
-          <ExampleActionItemListItem
-            key={doc.id}
-            doc={doc} />
-        ))}
-      </div>
-    )
-});
 
 const ActionPlanPage: React.FC = () => {
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [submit, setSubmit] = useState(false)
-  
-  useEffect(() => {
-    if (submit) { updateActionItems() } // The submit value will be set on load, so need to ensure that it is true
-   },
-   [ submit ] // A change in this value triggers the useEffect hook
-  )
-
-  const resetNewActionItemState = () => {
-    setName('')
-    setDescription('')
-    setSubmit(false)
-  }
-  
-  const updateActionItems = async () => {
-    const doc = await actionItems.add({
-      name: name,
-      description: description
-    })
-    resetNewActionItemState()
-    console.log(doc.id)
-    console.log(doc.data.name)
-    return 
-  }
-  
 
   return (
     <IonPage>
@@ -76,22 +39,6 @@ const ActionPlanPage: React.FC = () => {
           <li>Once you've completed the action item, mark it as complete.</li>
           <li>Check back in daily or weekly to find and complete more actions!</li>
         </ul>
-
-        <IonInput 
-          value={name} 
-          placeholder="Enter Name" 
-          onIonChange={e=>setName(e.detail.value!)}>
-        </IonInput>
-
-        <IonInput 
-          value={description} 
-          placeholder="Enter Description" 
-          onIonChange={e=>setDescription(e.detail.value!)}>
-        </IonInput>
-
-        <IonButton onClick={() => setSubmit(!submit)}>Submit New Action Item</IonButton>
-
-          <ActionItemList></ActionItemList>
 
       </IonContent>
     </IonPage>
