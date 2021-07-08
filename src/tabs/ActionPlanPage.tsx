@@ -1,19 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonItem, IonLabel, IonButton, IonMenuToggle, IonMenuButton, IonIcon, IonButtons, IonItemDivider, IonListHeader, IonImg, IonInput } from '@ionic/react'
-import { alertCircleSharp, checkmarkCircleOutline, documentSharp, menu } from 'ionicons/icons';
-import { actionItems } from '../store';
-// import { ActionItem } from '../models/ActionItem';
-import { DocumentSource } from 'firestorter';
+import React, { useState } from 'react';
+import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonLabel, IonButton, IonMenuButton, IonIcon, IonButtons, IonImg } from '@ionic/react'
+import { checkmarkCircleOutline } from 'ionicons/icons';
 import { observer } from 'mobx-react';
-import { ExampleActionItemListItem } from '../components/ExampleActionItemListItem';
-
-
 
 const ActionPlanPage: React.FC = () => {
-  const [name, setName] = useState('')
-  const [description, setDescription] = useState('')
-  const [submit, setSubmit] = useState(false)
-
   return (
     <IonPage>
       <IonHeader>
@@ -39,10 +29,8 @@ const ActionPlanPage: React.FC = () => {
           <li>Once you've completed the action item, mark it as complete.</li>
           <li>Check back in daily or weekly to find and complete more actions!</li>
         </ul>
-
       </IonContent>
     </IonPage>
-    
   );
 };
 
